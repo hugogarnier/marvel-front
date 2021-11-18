@@ -9,72 +9,41 @@ a {
   color: inherit;
 }
 body {
-  background-color: #151515;
-  /* background-color: #b3b3b3; */
-  color: #ffffff;
-  font-family: "Roboto Condensed", sans-serif;
+  /* background-color: #f5f5f5; */
+  background-color: #3a3939;
+  color: #202020;
+  font-family: "Bangers", cursive;
 }
 .container {
   margin: 0 10px;
 }
 
 /* HEADER */
-
 header {
+  background-color: #202020;
+  border-bottom: 2px solid black;
+}
+.menu > svg:hover {
+  cursor: pointer;
+}
+
+.menu {
+  width: 300px;
+  height: 80px;
+  margin: 0 auto;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  color: white;
 }
-nav {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  position: relative;
-}
-.menu {
-  position: absolute;
-  top: -40px;
-  right: -10px;
-  width: 50vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #151515;
-  border-left: 1px solid white;
-  transition: transform ease 0.2s;
-  z-index: 9000;
-}
-.open {
-  transform: translateX(0);
-  overflow: hidden;
-}
-.close {
-  transform: translateX(100%);
-}
+
 .menu > a {
   margin: 20px 0;
   font-size: 1.5rem;
 }
 .menu > a:hover {
   color: #ed1d24;
-}
-
-.burger {
-  fill: white;
-  transition: display ease 0.2s;
-  z-index: 99999;
-}
-.burger:hover {
-  fill: rgb(141, 141, 141);
-}
-.active {
-  display: flex;
-}
-.inactive {
-  display: none;
 }
 
 /* ---------------------- */
@@ -90,37 +59,41 @@ nav {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin-top: 30px;
-  /* background-color: turquoise; */
+  margin-top: 20px;
 }
 .card {
   position: relative;
-  width: 250px;
-  margin: 30px 0;
-  box-shadow: 0px 0px 9px 1px #ed1d24;
-  transition: transform ease 0.2s;
-}
-.card:hover {
-  cursor: pointer;
-  transform: scale(1.05);
+  width: 300px;
+  height: 300px;
+  margin: 20px 0;
+  border: 2px solid black;
+  box-shadow: 0 6px 6px -6px #000;
+
+  overflow: hidden;
 }
 .card > img {
   width: 100%;
   height: 300px;
   object-fit: cover;
+  transition: transform ease 0.2s;
+}
+.card > img:hover {
+  cursor: pointer;
+  transform: scale(1.2);
 }
 .card-name {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  bottom: -2px;
+  right: -6px;
   width: 100px;
   height: 40px;
   text-align: center;
-  padding: 5px;
+  padding: 3px 10px;
   line-height: 30px;
   overflow: hidden;
-  background-color: #ed1d24;
-  font-weight: 600;
+  background-color: #fff;
+  border: 2px solid #000;
+  transform: skew(-15deg);
 }
 .card-description {
   margin-top: 15px;
@@ -144,34 +117,115 @@ nav {
 }
 
 /* ---------------------- */
+/* ----------CARD INFO------------ */
+
+.card-info-container {
+  background-color: #3a3939;
+  margin-top: 20px;
+}
+
+.card-image {
+  margin-top: 0;
+}
+.card-image > img:hover {
+  cursor: unset;
+  transform: unset;
+}
+
+.card-name-info {
+  font-size: 54px;
+  color: white;
+}
+.card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.comics {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1024px;
+  padding-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 2px solid black;
+  box-shadow: 0 6px 6px -6px #000;
+}
+.description {
+  font-size: 24px;
+  margin: 20px 10px;
+  padding: 5px;
+}
+.comic-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 300px;
+  margin: 20px 0;
+}
+.comic-container h3 {
+  margin-top: 20px;
+}
+.comic-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 2px solid black;
+  box-shadow: 0 6px 6px -6px #000;
+}
+
+/* ---------------------- */
 
 /* ----------FILTERS------------ */
 .filters {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   width: calc(100% - 60px);
 }
 .second-container {
   display: flex;
-  height: 60px;
-  background-color: turquoise;
+  /* height: 60px; */
 }
-.second-container > div:first-child {
+.second-container > div:first-child,
+.second-container > div:last-child {
   flex: 1;
-  background-color: violet;
 }
 .pages {
   flex: 2;
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: tomato;
 }
-.limit {
-  flex: 1;
-  background-color: rgb(63, 63, 0);
+.search {
+  margin: 20px 0;
 }
+input {
+  width: 200px;
+  outline: none;
+  padding: 10px 10px;
+  border: 2px solid black;
+  box-shadow: 0 6px 6px -6px #000;
+  font-family: "Bangers", cursive;
+}
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  width: 200px;
+}
+/* .pagination > span {
+  margin: 0 50px;
+} */
 
 /* ---------------------- */
 
@@ -181,36 +235,6 @@ nav {
     width: 750px;
     margin: 0 auto;
   }
-  nav {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .menu {
-    position: unset;
-    /* top: -30px;
-    right: -10px; */
-    width: 400px;
-    height: 80px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: unset;
-    border-left: 0;
-  }
-
-  .active,
-  .inactive {
-    display: none;
-  }
-  .open {
-    transform: unset;
-    overflow: unset;
-  }
-  .close {
-    transform: unset;
-  }
 
   /* -----------Characters----------- */
 
@@ -219,6 +243,11 @@ nav {
     flex-wrap: wrap;
     justify-content: space-evenly;
     gap: 10px;
+  }
+  .comics {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
   }
 }
 
@@ -230,6 +259,16 @@ nav {
 @media (min-width: 1180px) {
   .container {
     width: 1180px;
+  }
+}
+@media (min-width: 1440px) {
+  .container {
+    width: 1400px;
+  }
+}
+@media (min-width: 2560px) {
+  .container {
+    width: 2000px;
   }
 }
 /* ---------------------- */

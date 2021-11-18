@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const charactersAPI = async (page, name) => {
+const comicsCharactAPI = async (id) => {
   try {
-    let URI = `${process.env.REACT_APP_URI}/characters?name=${name}&page=${page}`;
+    let URI = `${process.env.REACT_APP_URI}/comics/${id}`;
 
     const response = await axios.get(URI, {
       headers: {
@@ -16,4 +16,4 @@ const charactersAPI = async (page, name) => {
   }
 };
 
-export default charactersAPI;
+export default comicsCharactAPI;

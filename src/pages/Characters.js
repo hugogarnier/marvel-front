@@ -8,16 +8,16 @@ const Characters = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [favClicked, setFavClicked] = useState(false);
   const [page, setPage] = useState(1);
+  const [name, setName] = useState("");
 
   useEffect(() => {
     const getData = async () => {
-      const characters = await charactersAPI(page);
+      const characters = await charactersAPI(page, name);
       setData(characters.results);
-      console.log(data);
       setIsLoading(false);
     };
     getData();
-  }, [page]);
+  }, [page, name]);
 
   const handleFav = () => {
     setFavClicked(!favClicked);
@@ -29,7 +29,12 @@ const Characters = () => {
         <p>Loading</p>
       ) : (
         <div className='card-container'>
-          <Filters page={page} setPage={setPage} />
+          <Filters
+            name={name}
+            setName={setName}
+            page={page}
+            setPage={setPage}
+          />
           {data.map((charac, index) => {
             return (
               <Card
