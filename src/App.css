@@ -103,12 +103,17 @@ header {
 .fav {
   display: none;
   position: absolute;
-  top: 20px;
-  left: 10px;
+  top: 10px;
+  right: 10px;
+  stroke: black;
+  z-index: 999999999;
+}
+.fav:hover {
+  cursor: pointer;
 }
 .fill {
   display: flex;
-  fill: rgb(255, 217, 0);
+  fill: #f0141d;
 }
 .outlined {
   display: flex;
@@ -195,28 +200,10 @@ header {
 }
 .card-comic > img {
   width: 100%;
-  /* height: 300px; */
   object-fit: cover;
   transition: transform ease 0.2s;
 }
-/* .card-comic > img:hover {
-  cursor: pointer;
-  transform: scale(1.2);
-} */
-/* .card-name {
-  position: absolute;
-  bottom: -2px;
-  right: -6px;
-  width: 100px;
-  height: 40px;
-  text-align: center;
-  padding: 3px 10px;
-  line-height: 30px;
-  overflow: hidden;
-  background-color: #fff;
-  border: 2px solid #000;
-  transform: skew(-15deg);
-} */
+
 .card-description {
   display: none;
   margin-top: 15px;
@@ -303,7 +290,8 @@ input {
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-    margin: 0 20px;
+    /* margin: 0 20px; */
+    gap: 10px;
   }
 }
 

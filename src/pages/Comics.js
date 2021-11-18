@@ -6,6 +6,8 @@ import Filters from "../components/Filters";
 
 const Comics = () => {
   const [data, setData] = useState();
+  const [count, setCount] = useState(0);
+  const [limit, setLimit] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [favClicked, setFavClicked] = useState(false);
   const [page, setPage] = useState(1);
@@ -14,6 +16,9 @@ const Comics = () => {
   useEffect(() => {
     const getData = async () => {
       const comics = await comicsAPI(page, name);
+      console.log(comics);
+      setCount(comics.count);
+      setLimit(comics.limit);
       setData(comics.results);
       setIsLoading(false);
     };
@@ -35,6 +40,8 @@ const Comics = () => {
             setName={setName}
             page={page}
             setPage={setPage}
+            limit={limit}
+            count={count}
           />
           {data.map((comic, index) => {
             return (

@@ -1,7 +1,12 @@
-const Filters = ({ page, setPage, name, setName }) => {
+const Filters = ({ page, setPage, name, setName, limit, count }) => {
   const handlePrevious = () => {
     if (page > 1) {
       setPage(page - 1);
+    }
+  };
+  const handleNext = () => {
+    if (Math.sign(Number(count) - Number(limit) * page) === 1) {
+      setPage(page + 1);
     }
   };
   const handleSearch = (e) => {
@@ -39,7 +44,7 @@ const Filters = ({ page, setPage, name, setName }) => {
             <span>PAGE {page}</span>
 
             <svg
-              onClick={() => setPage(page + 1)}
+              onClick={handleNext}
               className='arrow'
               xmlns='http://www.w3.org/2000/svg'
               width='24'
