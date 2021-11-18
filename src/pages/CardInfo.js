@@ -31,17 +31,20 @@ const CardInfo = () => {
       ) : (
         <div className='comics container'>
           <div className='description'>{location.state.description}</div>
-          {data.comics.map((comic, index) => {
-            return (
-              <div className='comic-container' key={index}>
-                <h3>{comic.title}</h3>
-                <img
-                  src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                  alt={comic.title}
-                />
-              </div>
-            );
-          })}
+
+          <div className='card-comic-container'>
+            {data.comics.map((comic, index) => {
+              return (
+                <div className='comic-container' key={index}>
+                  <h3>{comic.title}</h3>
+                  <img
+                    src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                    alt={comic.title}
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>

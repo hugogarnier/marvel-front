@@ -19,7 +19,7 @@ const Filters = ({ page, setPage, name, setName }) => {
             <input
               id='search'
               type='text'
-              placeholder="enter character's name"
+              placeholder="character's name or comics title"
               value={name}
               onChange={handleSearch}
             />
