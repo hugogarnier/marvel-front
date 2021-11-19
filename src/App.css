@@ -47,6 +47,41 @@ header {
 }
 
 /* ---------------------- */
+/* ----------LOGIN REGISTER------------ */
+.signup-login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+.forms {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.forms h1 {
+  margin: 20px 0;
+  font-size: 20px;
+  color: white;
+}
+.forms input {
+  margin: 10px 0;
+}
+.forms label {
+  color: #ed1d24;
+  font-size: 12px;
+}
+.forms a {
+  color: white;
+  margin-top: 20px;
+}
+.forms a:hover {
+  color: #ed1d24;
+}
+
+/* ---------------------- */
 /* -----------Characters----------- */
 .characters-container {
   display: flex;

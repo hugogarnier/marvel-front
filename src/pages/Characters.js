@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import charactersAPI from "../api/charactersAPI";
+import charactersFavAPI from "../api/charactersFavAPI";
 import favoriteAPI from "../api/favoriteAPI";
 import Card from "../components/Card";
 import Filters from "../components/Filters";
 
-const Characters = () => {
+const Characters = ({ token }) => {
   const [data, setData] = useState();
   const [count, setCount] = useState(0);
   const [limit, setLimit] = useState(0);
@@ -13,9 +14,8 @@ const Characters = () => {
   const [page, setPage] = useState(1);
   const [name, setName] = useState("");
   const [favorites, setFavorites] = useState(
-    JSON.parse(localStorage.getItem("favorites") || [])
+    localStorage.getItem("favorites") || []
   );
-
   useEffect(() => {
     const getData = async () => {
       const characters = await charactersAPI(page, name);
@@ -24,9 +24,16 @@ const Characters = () => {
       setData(characters.results);
       setIsLoading(false);
     };
-    console.log(favorites);
     getData();
   }, [page, name]);
+
+  useEffect(() => {
+    const sendFav = async () => {
+      const charactersFav = await charactersFavAPI(token, favorites);
+      console.log(charactersFav);
+    };
+    sendFav();
+  }, [favorites, token]);
 
   const handleFav = (index) => {
     const newData = [...data];
@@ -34,7 +41,6 @@ const Characters = () => {
     newData[index].favorite === false || newData[index].favorite === undefined
       ? (newData[index].favorite = true)
       : (newData[index].favorite = false);
-
     if (newFav.some((favorite) => favorite.name === newData[index].name)) {
       const removedFav = newFav.filter(
         (fav) => fav.name !== newData[index].name
@@ -43,7 +49,6 @@ const Characters = () => {
     } else {
       newFav.push(newData[index]);
       setFavorites(newFav);
-      localStorage.setItem("favorites", JSON.stringify(favorites));
     }
     setData(newData);
   };
