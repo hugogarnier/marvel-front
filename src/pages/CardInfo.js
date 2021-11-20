@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import comicsCharactAPI from "../api/comicsCharactAPI";
 
-const CardInfo = () => {
+const CardInfo = ({ token }) => {
   const { id } = useParams();
   const location = useLocation();
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const getData = async () => {
-      const character = await comicsCharactAPI(id);
+      const character = await comicsCharactAPI(id, token);
       setData(character);
       setIsLoading(false);
     };

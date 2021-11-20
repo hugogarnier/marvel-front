@@ -29,7 +29,7 @@ function App() {
         <Route path='/' exact element={<Characters token={token} />} />
         <Route path='/comics' element={<Comics token={token} />} />
         <Route path='/favorites' element={<Favorites token={token} />} />
-        <Route path='/character/:id' element={<CardInfo />} />
+        <Route path='/character/:id' element={<CardInfo token={token} />} />
         <Route path='/login' element={<Login setUser={setUser} />} />
         <Route path='/signup' element={<Signup setUser={setUser} />} />
       </Routes>
