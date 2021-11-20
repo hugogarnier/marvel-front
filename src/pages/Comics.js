@@ -1,32 +1,55 @@
 import { useEffect, useState } from "react";
 
 import comicsAPI from "../api/comicsAPI";
+import comicsFavAPI from "../api/comicsFavAPI";
 import CardComic from "../components/CardComic";
 import Filters from "../components/Filters";
 
-const Comics = () => {
+const Comics = ({ token }) => {
   const [data, setData] = useState();
   const [count, setCount] = useState(0);
   const [limit, setLimit] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const [favClicked, setFavClicked] = useState(false);
   const [page, setPage] = useState(1);
   const [name, setName] = useState("");
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      const comics = await comicsAPI(page, name);
-      console.log(comics);
+      const comics = await comicsAPI(page, name, token);
       setCount(comics.count);
       setLimit(comics.limit);
       setData(comics.results);
       setIsLoading(false);
     };
     getData();
-  }, [page, name]);
+  }, [page, name, token]);
 
-  const handleFav = () => {
-    setFavClicked(!favClicked);
+  useEffect(() => {
+    const sendFav = async () => {
+      await comicsFavAPI(token, favorites);
+    };
+    sendFav();
+  }, [favorites, token]);
+
+  const handleFav = (index) => {
+    const newData = [...data];
+    const array = [...favorites];
+    let addArray = true;
+    array.map((item) => {
+      if (item._id === newData[index]._id) {
+        array.splice(index, 1);
+        newData[index].favorite = false;
+        addArray = false;
+      }
+      return true;
+    });
+    if (addArray) {
+      newData[index].favorite = true;
+      array.push(newData[index]);
+    }
+    setFavorites([...array]);
+    setData(newData);
   };
 
   return (
@@ -50,7 +73,7 @@ const Comics = () => {
                 index={index}
                 comic={comic}
                 handleFav={handleFav}
-                favClicked={favClicked}
+                fav={comic.favorite}
               />
             );
           })}

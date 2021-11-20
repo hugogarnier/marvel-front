@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const Card = ({ charac, handleFav, favClicked, index, fav }) => {
+const Card = ({ charac, handleFav, index, fav }) => {
   const navigate = useNavigate();
   const handleInfoCharacter = () => {
     navigate(`/character/${charac._id}`, { state: charac });

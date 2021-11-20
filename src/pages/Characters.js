@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+
 import charactersAPI from "../api/charactersAPI";
 import charactersFavAPI from "../api/charactersFavAPI";
-import favoriteAPI from "../api/favoriteAPI";
 import Card from "../components/Card";
 import Filters from "../components/Filters";
 
@@ -10,46 +10,46 @@ const Characters = ({ token }) => {
   const [count, setCount] = useState(0);
   const [limit, setLimit] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const [favClicked, setFavClicked] = useState(false);
   const [page, setPage] = useState(1);
   const [name, setName] = useState("");
-  const [favorites, setFavorites] = useState(
-    localStorage.getItem("favorites") || []
-  );
+  const [favorites, setFavorites] = useState([]);
+
   useEffect(() => {
     const getData = async () => {
-      const characters = await charactersAPI(page, name);
+      const characters = await charactersAPI(page, name, token);
       setCount(characters.count);
       setLimit(characters.limit);
       setData(characters.results);
       setIsLoading(false);
     };
     getData();
-  }, [page, name]);
+  }, [page, name, token]);
 
   useEffect(() => {
     const sendFav = async () => {
-      const charactersFav = await charactersFavAPI(token, favorites);
-      console.log(charactersFav);
+      await charactersFavAPI(token, favorites);
     };
     sendFav();
   }, [favorites, token]);
 
   const handleFav = (index) => {
     const newData = [...data];
-    const newFav = [...favorites];
-    newData[index].favorite === false || newData[index].favorite === undefined
-      ? (newData[index].favorite = true)
-      : (newData[index].favorite = false);
-    if (newFav.some((favorite) => favorite.name === newData[index].name)) {
-      const removedFav = newFav.filter(
-        (fav) => fav.name !== newData[index].name
-      );
-      setFavorites(removedFav);
-    } else {
-      newFav.push(newData[index]);
-      setFavorites(newFav);
+
+    const array = [...favorites];
+    let addArray = true;
+    array.map((item) => {
+      if (item._id === newData[index]._id) {
+        array.splice(index, 1);
+        newData[index].favorite = false;
+        addArray = false;
+      }
+      return true;
+    });
+    if (addArray) {
+      newData[index].favorite = true;
+      array.push(newData[index]);
     }
+    setFavorites([...array]);
     setData(newData);
   };
 
@@ -75,7 +75,6 @@ const Characters = ({ token }) => {
                 charac={charac}
                 handleFav={handleFav}
                 fav={charac.favorite}
-                favClicked={favClicked}
               />
             );
           })}

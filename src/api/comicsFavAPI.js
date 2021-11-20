@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const favoriteAPI = async (token) => {
+const comicsFavAPI = async (token, favorites) => {
   try {
-    let URI = `${process.env.REACT_APP_URI}/favorites`;
-    const response = await axios.get(URI, {
+    let URI = `${process.env.REACT_APP_URI}/comics/fav`;
+    const response = await axios.post(URI, favorites, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -11,9 +11,8 @@ const favoriteAPI = async (token) => {
     return response.data;
   } catch (error) {
     console.log(error.response.data.message);
-    console.log(error.message);
     return error.message;
   }
 };
 
-export default favoriteAPI;
+export default comicsFavAPI;

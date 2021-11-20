@@ -25,9 +25,11 @@ header {
 }
 .menu > svg:hover {
   cursor: pointer;
+  fill: #ed1d24;
 }
 
 .menu {
+  position: relative;
   width: 300px;
   height: 80px;
   margin: 0 auto;
@@ -44,6 +46,12 @@ header {
 }
 .menu > a:hover {
   color: #ed1d24;
+}
+.logout {
+  position: absolute;
+  top: 90px;
+  right: 132px;
+  fill: white;
 }
 
 /* ---------------------- */
@@ -120,6 +128,20 @@ header {
   bottom: -2px;
   right: -6px;
   width: 100px;
+  height: 40px;
+  text-align: center;
+  padding: 3px 10px;
+  line-height: 30px;
+  overflow: hidden;
+  background-color: #fff;
+  border: 2px solid #000;
+  transform: skew(-15deg);
+}
+.card-name-comic {
+  position: absolute;
+  bottom: -2px;
+  right: -6px;
+  width: 300px;
   height: 40px;
   text-align: center;
   padding: 3px 10px;
@@ -222,6 +244,19 @@ header {
 }
 
 /* ---------------------- */
+/* -----------FAV----------- */
+.fav-characters {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.fav-characters p {
+  margin-top: 20px;
+  font-size: 24px;
+  color: white;
+}
+/* ---------------------- */
 /* ----------COMICS------------ */
 
 .card-comic {
@@ -301,6 +336,10 @@ input {
   .container {
     width: 750px;
     margin: 0 auto;
+  }
+  .logout {
+    top: 27px;
+    right: -60px;
   }
 
   /* -----------Characters----------- */

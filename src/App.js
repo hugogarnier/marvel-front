@@ -24,10 +24,10 @@ function App() {
   };
   return (
     <Router>
-      <Header setToken={setToken} token={token} />
+      <Header setToken={setToken} token={token} setUser={setUser} />
       <Routes>
         <Route path='/' exact element={<Characters token={token} />} />
-        <Route path='/comics' element={<Comics />} />
+        <Route path='/comics' element={<Comics token={token} />} />
         <Route path='/favorites' element={<Favorites token={token} />} />
         <Route path='/character/:id' element={<CardInfo />} />
         <Route path='/login' element={<Login setUser={setUser} />} />
