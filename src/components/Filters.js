@@ -9,6 +9,7 @@ const Filters = ({ page, setPage, name, setName, limit, count }) => {
       setPage(page + 1);
     }
   };
+
   const handleSearch = (e) => {
     setName(e.target.value);
     setPage(1);
@@ -18,18 +19,20 @@ const Filters = ({ page, setPage, name, setName, limit, count }) => {
       <div className='second-container'>
         <div></div>
         <div className='pages'>
-          {/* TODO: review pages to be never 0 or maximum */}
           <div className='search'>
             <label htmlFor='search'></label>
             <input
               id='search'
               type='text'
-              placeholder="character's name or comics title"
+              placeholder={count > 5000 ? "comics title" : "character's name"}
               value={name}
               onChange={handleSearch}
             />
           </div>
           <div className='pagination'>
+            <span className='start-end-page' onClick={() => setPage(1)}>
+              Start
+            </span>
             <svg
               onClick={handlePrevious}
               className='arrow'
@@ -53,6 +56,12 @@ const Filters = ({ page, setPage, name, setName, limit, count }) => {
             >
               <path d='M21 12l-18 12v-24z' />
             </svg>
+            <span
+              className='start-end-page'
+              onClick={() => setPage(Math.floor(count / limit) + 1)}
+            >
+              End
+            </span>
           </div>
         </div>
         <div></div>

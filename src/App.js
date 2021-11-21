@@ -10,6 +10,7 @@ import Favorites from "./pages/Favorites";
 import CardInfo from "./pages/CardInfo";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Footer from "./components/Footer";
 require("dotenv").config();
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path='/login' element={<Login setUser={setUser} />} />
         <Route path='/signup' element={<Signup setUser={setUser} />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

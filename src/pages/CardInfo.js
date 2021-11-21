@@ -14,7 +14,7 @@ const CardInfo = ({ token }) => {
       setIsLoading(false);
     };
     getData();
-  }, [id]);
+  }, [id, token]);
   return (
     <div className='card-info-container'>
       <div className='container card-info'>

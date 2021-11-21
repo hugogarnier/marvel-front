@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 import comicsAPI from "../api/comicsAPI";
 import comicsFavAPI from "../api/comicsFavAPI";
@@ -33,23 +34,24 @@ const Comics = ({ token }) => {
   }, [favorites, token]);
 
   const handleFav = (index) => {
-    const newData = [...data];
-    const array = [...favorites];
-    let addArray = true;
-    array.map((item) => {
-      if (item._id === newData[index]._id) {
-        array.splice(index, 1);
-        newData[index].favorite = false;
-        addArray = false;
+    if (token) {
+      const newData = [...data];
+      if (newData[index].favorite) {
+        if (newData[index].favorite === true) {
+          newData[index].favorite = false;
+        } else {
+          newData[index].favorite = true;
+        }
+      } else {
+        newData[index].favorite = true;
       }
-      return true;
-    });
-    if (addArray) {
-      newData[index].favorite = true;
-      array.push(newData[index]);
+      setFavorites(newData[index]);
+      setData(newData);
+    } else {
+      toast("Please login to save your favorites comics", {
+        icon: "❗️",
+      });
     }
-    setFavorites([...array]);
-    setData(newData);
   };
 
   return (
@@ -66,6 +68,7 @@ const Comics = ({ token }) => {
             limit={limit}
             count={count}
           />
+          <Toaster />
           {data.map((comic, index) => {
             return (
               <CardComic

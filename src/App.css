@@ -9,7 +9,6 @@ a {
   color: inherit;
 }
 body {
-  /* background-color: #f5f5f5; */
   background-color: #3a3939;
   color: #202020;
   font-family: "Bangers", cursive;
@@ -61,7 +60,11 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 75vh;
   margin: 20px 0;
+}
+.signup-login-container img {
+  width: 80px;
 }
 .forms {
   display: flex;
@@ -87,6 +90,10 @@ header {
 }
 .forms a:hover {
   color: #ed1d24;
+}
+input[type="submit"]:hover {
+  cursor: pointer;
+  background-color: #ed1d24;
 }
 
 /* ---------------------- */
@@ -328,8 +335,51 @@ input {
   cursor: pointer;
   fill: white;
 }
+.start-end-page:hover {
+  color: #f0141d;
+  cursor: pointer;
+}
 
 /* ---------------------- */
+/*  FOOTER  */
+
+footer {
+  /* margin-top: 3.75rem; */
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background-color: #202020;
+  color: white;
+}
+
+footer a {
+  font-weight: 600;
+  text-decoration: none;
+  outline: none;
+  margin: 0 5px;
+}
+footer a:hover {
+  color: #f0141d;
+}
+
+/* ---------------- */
+/* ---------SCROLL TO TOP------- */
+.scroll-to-top {
+  position: sticky;
+  bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 50px;
+  margin-bottom: 20px;
+  color: white;
+}
+.scroll-to-top h3:hover {
+  cursor: pointer;
+  color: #f0141d;
+}
+/* ---------------- */
 
 /* ---------MEDIA QUERIES------------- */
 @media (min-width: 768px) {
@@ -349,6 +399,7 @@ input {
     flex-wrap: wrap;
     justify-content: space-evenly;
     gap: 10px;
+    margin-bottom: 20px;
   }
   .comics {
     flex-direction: row;
@@ -366,6 +417,9 @@ input {
     align-items: center;
     /* margin: 0 20px; */
     gap: 10px;
+  }
+  footer {
+    font-size: 1.1rem;
   }
 }
 

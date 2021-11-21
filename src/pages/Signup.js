@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import logo from "../assets/deadpool-signup.png";
+
 const Signup = ({ setUser }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -42,6 +44,7 @@ const Signup = ({ setUser }) => {
 
   return (
     <div className='signup-login-container'>
+      <img src={logo} alt='deadpool' />
       <form className='forms' onSubmit={handleSubmit}>
         <h1>S'inscrire</h1>
         <input
