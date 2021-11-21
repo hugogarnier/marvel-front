@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import ScrollToTop from "../utils/scrollToTop";
 
+import ScrollToTop from "../utils/scrollToTop";
 import charactersAPI from "../api/charactersAPI";
 import charactersFavAPI from "../api/charactersFavAPI";
 import Card from "../components/Card";

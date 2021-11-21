@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
+import ScrollToTop from "../utils/scrollToTop";
 import comicsAPI from "../api/comicsAPI";
 import comicsFavAPI from "../api/comicsFavAPI";
 import CardComic from "../components/CardComic";
@@ -55,34 +56,37 @@ const Comics = ({ token }) => {
   };
 
   return (
-    <div className='container characters-container'>
-      {isLoading ? (
-        <p>Loading</p>
-      ) : (
-        <div className='card-container'>
-          <Filters
-            name={name}
-            setName={setName}
-            page={page}
-            setPage={setPage}
-            limit={limit}
-            count={count}
-          />
-          <Toaster />
-          {data.map((comic, index) => {
-            return (
-              <CardComic
-                key={index}
-                index={index}
-                comic={comic}
-                handleFav={handleFav}
-                fav={comic.favorite}
-              />
-            );
-          })}
-        </div>
-      )}
-    </div>
+    <>
+      <div className='container characters-container'>
+        {isLoading ? (
+          <p>Loading</p>
+        ) : (
+          <div className='card-container'>
+            <Filters
+              name={name}
+              setName={setName}
+              page={page}
+              setPage={setPage}
+              limit={limit}
+              count={count}
+            />
+            <Toaster />
+            {data.map((comic, index) => {
+              return (
+                <CardComic
+                  key={index}
+                  index={index}
+                  comic={comic}
+                  handleFav={handleFav}
+                  fav={comic.favorite}
+                />
+              );
+            })}
+          </div>
+        )}
+      </div>
+      <ScrollToTop />
+    </>
   );
 };
 
