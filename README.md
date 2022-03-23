@@ -2,7 +2,7 @@
 
 ### Backend - [Marvel API](https://github.com/hugogarnier/marvel-api)
 
-### Live demo - [Front Marvel](https://marvel-reacteur.hugogarnier.com)
+### Live demo - [Front Marvel](https://marvel.hugogarnier.com)
 
 ## Infos
 
